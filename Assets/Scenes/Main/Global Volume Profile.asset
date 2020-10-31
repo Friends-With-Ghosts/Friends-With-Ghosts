@@ -30,7 +30,7 @@ MonoBehaviour:
     max: 1
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.2
+    m_Value: 0.266
     min: 0.01
     max: 1
   rounded:
@@ -66,7 +66,7 @@ MonoBehaviour:
   texture:
     m_OverrideState: 1
     m_Value: {fileID: 0}
---- !u!114 &-5654922936081339368
+--- !u!114 &-2584717692972665961
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -82,15 +82,15 @@ MonoBehaviour:
   m_AdvancedMode: 0
   threshold:
     m_OverrideState: 1
-    m_Value: 0.9
+    m_Value: 0.7
     min: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.62
     min: 0
   scatter:
     m_OverrideState: 1
-    m_Value: 0.7
+    m_Value: 0.891
     min: 0
     max: 1
   clamp:
@@ -99,7 +99,7 @@ MonoBehaviour:
     min: 0
   tint:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 0.54339623, b: 0.54339623, a: 1}
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
     hdr: 0
     showAlpha: 0
     showEyeDropper: 1
@@ -108,10 +108,10 @@ MonoBehaviour:
     m_Value: 0
   dirtTexture:
     m_OverrideState: 1
-    m_Value: {fileID: 0}
+    m_Value: {fileID: 2800000, guid: 7998bba52df96364e8208647aed9aa69, type: 3}
   dirtIntensity:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 4
     min: 0
 --- !u!114 &-2096557003513887368
 MonoBehaviour:
@@ -150,7 +150,6 @@ MonoBehaviour:
   m_Name: Global Volume Profile
   m_EditorClassIdentifier: 
   components:
-  - {fileID: -5654922936081339368}
   - {fileID: -7610021120943404101}
   - {fileID: -5953976403967397728}
   - {fileID: 6949089814120184905}
@@ -158,6 +157,7 @@ MonoBehaviour:
   - {fileID: -2096557003513887368}
   - {fileID: 7419597580429923785}
   - {fileID: 6808963736396516754}
+  - {fileID: -2584717692972665961}
 --- !u!114 &3142344870779811293
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -193,16 +193,16 @@ MonoBehaviour:
     m_Value: 0
   focusDistance:
     m_OverrideState: 1
-    m_Value: 20
+    m_Value: 3
     min: 0.1
   aperture:
     m_OverrideState: 1
-    m_Value: 32
+    m_Value: 10.5
     min: 1
     max: 32
   focalLength:
     m_OverrideState: 1
-    m_Value: 300
+    m_Value: 88
     min: 1
     max: 300
   bladeCount:
@@ -212,7 +212,7 @@ MonoBehaviour:
     max: 9
   bladeCurvature:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.507
     min: 0
     max: 1
   bladeRotation:
@@ -391,8 +391,8 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.71788853
-          value: 0.53125
+          time: 0.75014657
+          value: 0.5162506
           inSlope: -2.4092417
           outSlope: -2.4092417
           tangentMode: 0
@@ -474,7 +474,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.15
+    m_Value: 0.19
     min: -1
     max: 1
   xMultiplier:

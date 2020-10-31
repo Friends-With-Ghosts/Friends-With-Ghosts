@@ -29,6 +29,10 @@ public class ThirdPersonCharacter : MonoBehaviour
     Animator animator ;
 
     public bool isAnime = false;
+    public bool isScared = false;
+
+
+
     
 
     private void Start() {
@@ -50,6 +54,16 @@ public class ThirdPersonCharacter : MonoBehaviour
             isAnime = !isAnime;
             animator.SetBool("isAnime", isAnime);
             speed = 10;
+        }
+
+        if(Input.GetKeyDown(KeyCode.G)){
+            isScared = !isScared;
+            animator.SetBool("isScared", isScared);
+        }
+        if(Input.GetKeyDown(KeyCode.T)){
+            isTerrified = !isTerrified;
+            animator.SetTrigger("Terrified");
+            
         }
     }
 
@@ -78,8 +92,18 @@ public class ThirdPersonCharacter : MonoBehaviour
             speed = 12;
         }
 
+        Vector3 moveDir;
+
         if(direction != Vector3.zero)
         {
+            if(Input.GetKey(KeyCode.LeftShift)){
+                speed = sprintSpeed;
+            } else {
+                speed = 5;
+            } 
+            if(isAnime){
+                speed = 12;
+            }
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             
@@ -88,25 +112,16 @@ public class ThirdPersonCharacter : MonoBehaviour
             float targetSpeed = speed * direction.magnitude;
             currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);
             Debug.Log(currentSpeed);
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * currentSpeed * Time.deltaTime);
             controller.Move(gravityVector * Time.deltaTime);
         }else {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            speed = 0;
             
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
-            
-            float targetSpeed = speed * direction.magnitude;
-            currentSpeed = Mathf.SmoothDamp(currentSpeed, 0, ref speedSmoothVelocity, speedSmoothTime);
-            Debug.Log(currentSpeed);
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            controller.Move(moveDir.normalized * currentSpeed * Time.deltaTime);
-            controller.Move(gravityVector * Time.deltaTime);
         }
 
     
-        animator.SetFloat("Speed", currentSpeed);
+        animator.SetFloat("Speed", speed, speedSmoothTime/2, Time.deltaTime);
         
 
     }
