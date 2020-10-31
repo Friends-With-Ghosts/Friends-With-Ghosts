@@ -29,13 +29,18 @@ public class ThirdPersonCharacter : MonoBehaviour
 
     private void Start() {
         animator = gfx.GetComponent<Animator>();
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
         Move();
-     
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     void Move(){
