@@ -10,6 +10,7 @@ public class ThirdPersonCharacter : MonoBehaviour
     public float currentSpeed = 0f;
 
     public float speed;
+    public float sprintSpeed;
     public float gravity;
     
     public float turnSmoothTime = 0.1f;
@@ -42,13 +43,22 @@ public class ThirdPersonCharacter : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
         Vector3 gravityVector = Vector3.zero;
+        
 
         if(!controller.isGrounded)
         {
             gravityVector.y -= gravity;
         }  
 
-        if(direction.magnitude >= 0.1f)
+
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            speed = sprintSpeed;
+        } else {
+            speed = 5;
+        }
+
+        if(direction != Vector3.zero)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
@@ -57,12 +67,25 @@ public class ThirdPersonCharacter : MonoBehaviour
             
             float targetSpeed = speed * direction.magnitude;
             currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);
+            Debug.Log(currentSpeed);
+            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            controller.Move(moveDir.normalized * currentSpeed * Time.deltaTime);
+            controller.Move(gravityVector * Time.deltaTime);
+        }else {
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            
+            float targetSpeed = speed * direction.magnitude;
+            currentSpeed = Mathf.SmoothDamp(currentSpeed, 0, ref speedSmoothVelocity, speedSmoothTime);
+            Debug.Log(currentSpeed);
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * currentSpeed * Time.deltaTime);
             controller.Move(gravityVector * Time.deltaTime);
         }
 
-        animator.SetFloat("Speed", direction.magnitude, speedSmoothTime, Time.deltaTime );
+        animator.SetFloat("Speed", currentSpeed);
 
     }
 }
