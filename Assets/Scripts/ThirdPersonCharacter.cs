@@ -12,6 +12,8 @@ public class ThirdPersonCharacter : MonoBehaviour
     public float speed;
     public float sprintSpeed;
     public float gravity;
+
+    public bool isTerrified;
     
     public float turnSmoothTime = 0.1f;
     private float turnSmoothVelocity;
@@ -25,6 +27,7 @@ public class ThirdPersonCharacter : MonoBehaviour
     public GameObject gfx;
     Animator animator ;
 
+    public bool isAnime = false;
     
 
     private void Start() {
@@ -40,6 +43,12 @@ public class ThirdPersonCharacter : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape)){
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+        }
+
+        if(Input.GetKeyDown(KeyCode.B)){
+            isAnime = !isAnime;
+            animator.SetBool("isAnime", isAnime);
+            speed = 10;
         }
     }
 
@@ -59,8 +68,13 @@ public class ThirdPersonCharacter : MonoBehaviour
         if(Input.GetKey(KeyCode.LeftShift))
         {
             speed = sprintSpeed;
+
+            
         } else {
             speed = 5;
+        } 
+        if(isAnime){
+            speed = 12;
         }
 
         if(direction != Vector3.zero)
@@ -90,7 +104,9 @@ public class ThirdPersonCharacter : MonoBehaviour
             controller.Move(gravityVector * Time.deltaTime);
         }
 
+    
         animator.SetFloat("Speed", currentSpeed);
+        
 
     }
 }
