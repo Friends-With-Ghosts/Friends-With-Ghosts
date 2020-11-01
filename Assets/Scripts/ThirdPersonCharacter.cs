@@ -31,6 +31,8 @@ public class ThirdPersonCharacter : MonoBehaviour
     public bool isAnime = false;
     public bool isScared = false;
 
+    public bool isReadingLore = false;
+
 
 
     
@@ -44,26 +46,28 @@ public class ThirdPersonCharacter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
-        if(Input.GetKeyDown(KeyCode.Escape)){
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
+        if(!isReadingLore)
+        {  
+            Move();
+            if(Input.GetKeyDown(KeyCode.Escape)){
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
 
-        if(Input.GetKeyDown(KeyCode.B)){
-            isAnime = !isAnime;
-            animator.SetBool("isAnime", isAnime);
-            speed = 10;
-        }
+            if(Input.GetKeyDown(KeyCode.B)){
+                isAnime = !isAnime;
+                animator.SetBool("isAnime", isAnime);
+                speed = 10;
+            }
 
-        if(Input.GetKeyDown(KeyCode.G)){
-            isScared = !isScared;
-            animator.SetBool("isScared", isScared);
-        }
-        if(Input.GetKeyDown(KeyCode.T)){
-            isTerrified = !isTerrified;
-            animator.SetTrigger("Terrified");
-            
+            if(Input.GetKeyDown(KeyCode.G)){
+                isScared = !isScared;
+                animator.SetBool("isScared", isScared);
+            }
+            if(Input.GetKeyDown(KeyCode.T)){
+                isTerrified = !isTerrified;
+                animator.SetTrigger("Terrified");    
+            }
         }
     }
 

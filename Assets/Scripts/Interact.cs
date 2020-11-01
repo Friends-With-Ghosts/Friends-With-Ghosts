@@ -12,7 +12,7 @@ public class Interact : MonoBehaviour
     private TextMeshProUGUI loreTextMesh;
 
     bool loreReadable = false;
-    bool readingLore = false;
+    public bool readingLore = false;
 
     string loreString = "";
 
@@ -31,7 +31,7 @@ public class Interact : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.F)){
                 canvas.enabled = true;
                 loreTextMesh.SetText(loreString);
-               
+                Time.timeScale = 0;
                 readingLore = true;
             }
             
@@ -39,7 +39,7 @@ public class Interact : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.F)){
                 canvas.enabled = false;
                 loreTextMesh.SetText("");
-               
+                Time.timeScale = 1;
                 readingLore = false;
             }
             
