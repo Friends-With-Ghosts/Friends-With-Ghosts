@@ -2069,7 +2069,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1002388059}
-  m_LocalRotation: {x: -0.025685621, y: -0.7066402, z: -0.025685625, w: 0.70664006}
+  m_LocalRotation: {x: -0.025685623, y: -0.7066401, z: -0.025685621, w: 0.7066401}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7969,6 +7969,14 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 465955564}
+    - target: {fileID: 807466624599926586, guid: acebfcbc81a66a44c9cdb7faf650e60f, type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 807466624599926586, guid: acebfcbc81a66a44c9cdb7faf650e60f, type: 3}
+      propertyPath: sprintSpeed
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 807466624599926587, guid: acebfcbc81a66a44c9cdb7faf650e60f, type: 3}
       propertyPath: m_Enabled
       value: 1

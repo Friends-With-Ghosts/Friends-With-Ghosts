@@ -80,17 +80,17 @@ public class ThirdPersonCharacter : MonoBehaviour
         }  
 
 
-        if(Input.GetKey(KeyCode.LeftShift))
-        {
-            speed = sprintSpeed;
+        // if(Input.GetKey(KeyCode.LeftShift))
+        // {
+        //     speed = sprintSpeed;
 
             
-        } else {
-            speed = 5;
-        } 
-        if(isAnime){
-            speed = 12;
-        }
+        // } else {
+        //     speed = 5;
+        // } 
+        // if(isAnime){
+        //     speed = 12;
+        // }
 
         Vector3 moveDir;
 
@@ -99,7 +99,7 @@ public class ThirdPersonCharacter : MonoBehaviour
             if(Input.GetKey(KeyCode.LeftShift)){
                 speed = sprintSpeed;
             } else {
-                speed = 5;
+                speed = 3;
             } 
             if(isAnime){
                 speed = 12;
