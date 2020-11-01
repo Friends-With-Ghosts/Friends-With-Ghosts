@@ -41,7 +41,8 @@ public class GameManager : MonoBehaviour
 
     public void SwitchLights(){
         lightsGroup.SetActive(!lightsGroup.activeSelf);
-        lightsSFX.Play();
+        // lightsSFX.Play();
+        FindObjectOfType<AudioManager>().Play("screech");
     }
 
     public void CamEffect(){
