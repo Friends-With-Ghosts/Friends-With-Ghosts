@@ -79,19 +79,6 @@ public class ThirdPersonCharacter : MonoBehaviour
             gravityVector.y -= gravity;
         }  
 
-
-        // if(Input.GetKey(KeyCode.LeftShift))
-        // {
-        //     speed = sprintSpeed;
-
-            
-        // } else {
-        //     speed = 5;
-        // } 
-        // if(isAnime){
-        //     speed = 12;
-        // }
-
         Vector3 moveDir;
 
         if(direction != Vector3.zero)
@@ -110,19 +97,21 @@ public class ThirdPersonCharacter : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             
             float targetSpeed = speed * direction.magnitude;
-            currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);
-            Debug.Log(currentSpeed);
+            currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime*2);
+            // Debug.Log(currentSpeed);
             moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * currentSpeed * Time.deltaTime);
             controller.Move(gravityVector * Time.deltaTime);
         }else {
-            speed = 0;
+            currentSpeed = Mathf.SmoothDamp(currentSpeed, 0, ref speedSmoothVelocity, speedSmoothTime*2);
             
         }
 
     
-        animator.SetFloat("Speed", speed, speedSmoothTime/2, Time.deltaTime);
+        animator.SetFloat("Speed", currentSpeed);
         
 
     }
+
+    
 }
