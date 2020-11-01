@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 public class Interact : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class Interact : MonoBehaviour
     public bool readingLore = false;
 
     string loreString = "";
+
+    bool doorOpenable = false;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +47,8 @@ public class Interact : MonoBehaviour
             }
             
         }
+
+        
             
     }
 
@@ -54,6 +59,7 @@ public class Interact : MonoBehaviour
             loreString = other.gameObject.GetComponent<Interactable>().loreSnippet;
 
         }
+       
     }
     private void OnTriggerExit(Collider other) {
         if(other.gameObject.tag == "interactable"){
