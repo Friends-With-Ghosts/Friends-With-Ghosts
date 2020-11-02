@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using DG.Tweening;
 
-public class Interact : MonoBehaviour
+public class Blackout : MonoBehaviour
 {
 
     public Canvas canvas;
@@ -18,6 +18,7 @@ public class Interact : MonoBehaviour
     string loreString = "";
 
     bool doorOpenable = false;
+    GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +45,7 @@ public class Interact : MonoBehaviour
                 loreTextMesh.SetText("");
                 Time.timeScale = 1;
                 readingLore = false;
+                gameManager.StartBlackout();
             }
             
         }
@@ -53,11 +55,11 @@ public class Interact : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        // Debug.Log(other);
+        Debug.Log(other);
         if(other.gameObject.tag == "interactable"){
             loreReadable = true; 
             loreString = other.gameObject.GetComponent<Interactable>().loreSnippet;
-
+            
         }
        
     }

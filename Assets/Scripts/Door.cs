@@ -17,7 +17,7 @@ public class Door : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(isOpenable);
+        // Debug.Log(isOpenable);
         if(isOpenable){
             if(Input.GetKeyDown(KeyCode.F)){
                 transform.DOLocalRotate(Quaternion.Euler(-90,90,-90).eulerAngles, 0.5f);
@@ -35,8 +35,7 @@ public class Door : MonoBehaviour
         if(other.gameObject.tag == "Player"){
             Debug.Log("Open me");
             if(!isLocked){
-                transform.DOLocalRotate(Quaternion.Euler(-90,90,-90).eulerAngles, 0.5f);
-                isOpenable = false;
+                isOpenable = true;
             }
         }
     }
