@@ -19,6 +19,10 @@ public class Interact : MonoBehaviour
 
     bool doorOpenable = false;
 
+    bool blackout = false;
+
+    public GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +48,9 @@ public class Interact : MonoBehaviour
                 loreTextMesh.SetText("");
                 Time.timeScale = 1;
                 readingLore = false;
+                if(blackout == true){
+                    gameManager.StartBlackout();
+                }
             }
             
         }
@@ -58,6 +65,11 @@ public class Interact : MonoBehaviour
             loreReadable = true; 
             loreString = other.gameObject.GetComponent<Interactable>().loreSnippet;
 
+        }
+        if(other.gameObject.tag == "blackout"){
+            loreReadable = true;
+            loreString = other.gameObject.GetComponent<Interactable>().loreSnippet;
+            blackout = true;
         }
        
     }

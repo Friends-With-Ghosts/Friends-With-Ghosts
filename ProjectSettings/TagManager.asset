@@ -6,6 +6,7 @@ TagManager:
   tags:
   - interactable
   - door
+  - blackout
   layers:
   - Default
   - TransparentFX

@@ -59,7 +59,7 @@ public class Blackout : MonoBehaviour
         if(other.gameObject.tag == "interactable"){
             loreReadable = true; 
             loreString = other.gameObject.GetComponent<Interactable>().loreSnippet;
-            
+    
         }
        
     }

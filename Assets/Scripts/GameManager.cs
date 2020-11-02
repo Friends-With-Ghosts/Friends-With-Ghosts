@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject lightsGroup;
     
+    public GameObject player;
 
     public AudioSource lightsSFX;
 
@@ -35,6 +36,9 @@ public class GameManager : MonoBehaviour
         {
             colorAdjustments = profile.Add<ColorAdjustments>(false);
         }
+
+        FindObjectOfType<AudioManager>().Play("ooo");
+        
 
     }
 
@@ -70,14 +74,21 @@ public class GameManager : MonoBehaviour
     public void Stage2Active(){
         stage1.SetActive(false);
         stage2.SetActive(true);
+        
+        
+        
+        
     }
 
     IEnumerator blackout(){
         Debug.Log("Start blackout");
         SwitchLights();
         FindObjectOfType<AudioManager>().Play("screech");
+        FindObjectOfType<AudioManager>().Stop("ooo");
         Stage2Active();
+        player.transform.position = new Vector3(-20.59f,17f,-14.734f);
         yield return new WaitForSeconds(3f);
+        FindObjectOfType<AudioManager>().Play("basement4");
         SwitchLights();
         
         Debug.Log("End blackout");

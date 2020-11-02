@@ -6,7 +6,7 @@ public class Interactable : MonoBehaviour
 {
 
     private void Start() {
-        gameObject.tag = "interactable";
+        
     }
     public string loreSnippet = "";
 
