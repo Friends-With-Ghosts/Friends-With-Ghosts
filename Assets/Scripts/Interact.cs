@@ -50,6 +50,7 @@ public class Interact : MonoBehaviour
                 readingLore = false;
                 if(blackout == true){
                     gameManager.StartBlackout();
+                    blackout = false;
                 }
             }
             
